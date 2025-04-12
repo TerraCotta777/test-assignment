@@ -1,0 +1,46 @@
+@use '@/styles/mixins';
+
+.header {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 15px 20px;
+    height: 80px;
+    @include mixins.flex-center(row);
+    justify-content: space-between;
+}
+
+.logoWrapper {
+    @include mixins.flex-center(row);
+}
+
+.logo {
+    width: 80px;
+    height: 50px;
+}
+
+.logoText {
+    max-width: 228px;
+    margin-left: 20px;
+    font-size: 16px;
+    line-height: 160%;
+}
+
+.profile {
+    @include mixins.flex-center(row);
+    text-decoration: none;
+    color: inherit;
+}
+
+.avatar {
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    @include mixins.flex-center(row);
+    background-color: #f3f3f3;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.name {
+    font-size: 16px;
+}

@@ -12,7 +12,7 @@ interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Eye = () => <Image src={EyeIcon} alt="глаз" />
 const EyeOff = () => <Image src={EyeSlashIcon} alt="глаз зачеркнутый" />
 
-const PasswordInput = (props: PasswordInputProps) => {
+export default function PasswordInput(props: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false)
 
   const toggleVisibility = () => setShowPassword((prev) => !prev)
@@ -36,5 +36,3 @@ const PasswordInput = (props: PasswordInputProps) => {
     />
   )
 }
-
-export default PasswordInput

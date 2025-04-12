@@ -7,7 +7,7 @@ interface FormProps {
   children: ReactNode
 }
 
-export const Form = ({ onSubmit, children }: FormProps) => {
+export function Form({ onSubmit, children }: FormProps) {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       {children}

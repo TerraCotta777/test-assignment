@@ -4,10 +4,9 @@ import clsx from 'clsx'
 
 interface PageTitleProps {
   title: string
-  subtitle?: string
   className?: string
 }
 
-export const PageTitle = ({ title, className }: PageTitleProps) => {
+export function PageTitle({ title, className }: PageTitleProps) {
   return <h1 className={clsx(styles.title, className)}>{title}</h1>
 }

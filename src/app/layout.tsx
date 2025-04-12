@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.scss'
+import Header from '@/components/header/Header'
 
 const inter = Inter({
   subsets: ['cyrillic'],
@@ -20,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <Header />
       <body className={inter.className}>{children}</body>
     </html>
   )

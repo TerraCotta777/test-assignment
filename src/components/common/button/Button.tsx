@@ -8,13 +8,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode
 }
 
-export const Button = ({
+export function Button({
   children,
   className,
   variant = 'primary',
   icon,
   ...rest
-}: ButtonProps) => {
+}: ButtonProps) {
   return (
     <button
       className={clsx(styles.button, styles[variant], className)}

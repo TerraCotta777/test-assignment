@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import styles from './LoginForm.module.scss'
 import { login } from '@/api/auth'
 import { Button, Input } from '@/components/common'
@@ -40,7 +40,9 @@ export default function LoginForm() {
           type="email"
           placeholder="Email"
           leftIcon={<Image src={MailIcon} alt="почта" />}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
           required
         />
       </div>

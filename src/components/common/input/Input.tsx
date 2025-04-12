@@ -8,13 +8,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
 }
 
-export const Input = ({
+export function Input({
   leftIcon,
   rightIcon,
   error,
   className,
   ...rest
-}: InputProps) => {
+}: InputProps) {
   return (
     <div
       className={clsx(styles.inputWrapper, {
