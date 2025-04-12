@@ -1,0 +1,7 @@
+@use '@/styles/mixins.scss';
+
+.form {
+    width: 100%;
+    @include mixins.flex-center(column);
+    gap: 15px;
+}

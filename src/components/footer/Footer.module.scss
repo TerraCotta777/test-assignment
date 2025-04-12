@@ -1,0 +1,10 @@
+@use '@/styles/mixins.scss';
+
+.footer {
+    height: 72px;
+    @include mixins.flex-center(row);
+}
+
+.link {
+    font-weight: 500;
+}

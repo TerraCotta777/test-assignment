@@ -26,8 +26,12 @@ export default function Header() {
             <div className={styles.avatar}>A</div>
           </Link>
         ) : (
-          <Link href="/login" className={styles.loginButton}>
-            <Button variant="secondary" type="button">
+          <Link href="/login">
+            <Button
+              variant="secondary"
+              type="button"
+              className={styles.loginButton}
+            >
               Войти
             </Button>
           </Link>

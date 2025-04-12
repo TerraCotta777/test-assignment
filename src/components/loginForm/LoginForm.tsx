@@ -3,7 +3,7 @@
 import { ChangeEvent, useState } from 'react'
 import styles from './LoginForm.module.scss'
 import { login } from '@/api/auth'
-import { Button, Input } from '@/components/common'
+import { Button, Form, Input } from '@/components/common'
 import Image from 'next/image'
 import MailIcon from '@/assets/envelope.svg'
 import LockIcon from '@/assets/lock.svg'
@@ -34,37 +34,33 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.field}>
-        <Input
-          type="email"
-          placeholder="Email"
-          leftIcon={<Image src={MailIcon} alt="почта" />}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
-          required
-        />
-      </div>
+    <Form onSubmit={handleSubmit}>
+      <Input
+        type="email"
+        placeholder="Email"
+        leftIcon={<Image src={MailIcon} alt="почта" />}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setEmail(e.target.value)
+        }
+        required
+      />
 
-      <div className={styles.field}>
-        <PasswordInput
-          placeholder="Пароль"
-          leftIcon={<Image src={LockIcon} alt="замок" />}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+      <PasswordInput
+        placeholder="Пароль"
+        leftIcon={<Image src={LockIcon} alt="замок" />}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
       {error && <p className={styles.error}>{error}</p>}
 
       <Button
         type="submit"
-        variant="secondary"
+        className={styles.button}
         icon={<Image src={LockIcon} alt="замок" />}
       >
         Войти
       </Button>
-    </form>
+    </Form>
   )
 }

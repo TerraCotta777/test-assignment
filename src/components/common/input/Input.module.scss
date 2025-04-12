@@ -1,10 +1,11 @@
 .inputWrapper {
     position: relative;
+    width: 100%;
     display: flex;
     align-items: center;
 
     &.withLeftIcon .input {
-        padding-left: 2.5rem;
+        padding-left: 54px;
     }
 
     &.withRightIcon .input {
@@ -23,17 +24,18 @@
 }
 
 .leftIcon {
-    left: 0.75rem;
+    left: 20px;
 }
 
 .rightIcon {
-    right: 0.75rem;
-    pointer-events: auto; // нужно для клика по кнопке
+    right: 20px;
+    pointer-events: auto;
 }
 
 .input {
     width: 100%;
-    padding: 0.5rem 1rem;
+    height: 26px;
+    padding: 12px 22px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
