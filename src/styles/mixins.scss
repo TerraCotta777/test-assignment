@@ -1,0 +1,60 @@
+@mixin clearfix() {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $ease: ease-in-out) {
+    transition: $properties $duration $ease;
+}
+
+@mixin responsive-text($min-size, $max-size, $min-vw: 320, $max-vw: 1200) {
+    font-size: $min-size;
+
+    @media (min-width: $min-vw) {
+        font-size: calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw})));
+    }
+
+    @media (min-width: $max-vw) {
+        font-size: $max-size;
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint =="sm" {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="md" {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="lg" {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="xl" {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Unknown breakpoint: `#{$breakpoint}`. Please use 'sm', 'md', 'lg', or 'xl'.";
+    }
+}
