@@ -1,0 +1,47 @@
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &.withLeftIcon .input {
+        padding-left: 2.5rem;
+    }
+
+    &.withRightIcon .input {
+        padding-right: 2.5rem;
+    }
+}
+
+.leftIcon,
+.rightIcon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    pointer-events: none;
+}
+
+.leftIcon {
+    left: 0.75rem;
+}
+
+.rightIcon {
+    right: 0.75rem;
+    pointer-events: auto; // нужно для клика по кнопке
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.2s ease;
+}
+
+.error {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: red;
+}

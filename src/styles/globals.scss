@@ -1,8 +1,13 @@
-@import url('reset.scss');
+@import './reset.scss';
+@import './mixins.scss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-button-background: #000000;
+  --primary-button-foreground: #ffffff;
+  --secondary-button-background: #ffffff;
+  --secondary-button-foreground: #000000;
 }
 
 html,

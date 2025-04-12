@@ -1,0 +1,28 @@
+@use '@/styles/mixins';
+
+.button {
+    @include mixins.flex-center(row);
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    @include mixins.transition(background, 0.2s, ease-in-out);
+
+    &.primary {
+        padding: 12px;
+        border: none;
+        background: var(--primary-button-background);
+        color: var(--primary-button-foreground);
+    }
+
+    &.secondary {
+        padding: 7px 22px;
+        border: 1px solid #d4d4d4;
+        background: var(--secondary-button-background);
+        color: var(--secondary-button-foreground);
+    }
+}
+
+.icon {
+    margin-right: 10px;
+}
