@@ -7,6 +7,7 @@ import styles from './PasswordInput.module.scss'
 
 interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
   leftIcon?: ReactNode
+  errorMessage?: string
 }
 
 const Eye = () => <Image src={EyeIcon} alt="глаз" />
@@ -33,6 +34,7 @@ export default function PasswordInput(props: PasswordInputProps) {
           {showPassword ? <EyeOff /> : <Eye />}
         </button>
       }
+      errorMessage={props.errorMessage}
     />
   )
 }

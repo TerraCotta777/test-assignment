@@ -2,71 +2,74 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form'
 import styles from './SignUp.module.scss'
-import { signUp } from '@/api/auth'
 import { Button, Form, Input } from '@/components/common'
 import Image from 'next/image'
 import UserIcon from '@/assets/user.svg'
 import MailIcon from '@/assets/envelope.svg'
 import LockIcon from '@/assets/lock.svg'
 import PasswordInput from '../passwordInput/PasswordInput'
-
-interface SignUpFormValues {
-  name: string
-  email: string
-  password: string
-}
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import axios from 'axios'
+import { useAuth } from '@/hooks/useAuth'
+import { AuthData } from '@/types/authTypes'
 
 export default function SignUpForm() {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<SignUpFormValues>()
-  //   const router = useRouter()
+  } = useForm<AuthData>({ mode: 'onBlur' })
+  const router = useRouter()
+  const [errorResponse, setErrorResponse] = useState('')
+  const { signUpUser } = useAuth()
 
-  console.log('errors', isValid)
-  const onSubmit: SubmitHandler<SignUpFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<AuthData> = async (data) => {
     try {
-      const res = await signUp(data)
-      const token = res.value
-      localStorage.setItem('token', token)
+      await signUpUser(data)
+      router.push('/profile')
     } catch (err) {
-      console.error(err)
+      if (axios.isAxiosError(err)) {
+        const errorMessage =
+          err.response?.data.message || 'Произошла ошибка при регистрации'
+        setErrorResponse(errorMessage)
+      } else {
+        setErrorResponse('Произошла ошибка при входе')
+      }
     }
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {errorResponse && <p className={styles.error}>{errorResponse}</p>}
       <Input
         type="text"
         placeholder="Имя"
         leftIcon={<Image src={UserIcon} alt="человек" />}
-        {...register('name')}
+        {...register('name', { required: 'Имя обязательно' })}
         errorMessage={errors.name?.message}
       />
-      {errors.name && (
-        <span className={styles.error}>{errors.name.message}</span>
-      )}
 
       <Input
         type="text"
         placeholder="E-mail"
         leftIcon={<Image src={MailIcon} alt="почта" />}
-        {...register('email')}
+        {...register('email', {
+          required: 'E-mail обязателен',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: 'Некорректный email адрес',
+          },
+        })}
         errorMessage={errors.email?.message}
       />
-      {errors.email && (
-        <span className={styles.error}>{errors.email.message}</span>
-      )}
 
       <PasswordInput
         placeholder="Пароль"
         leftIcon={<Image src={LockIcon} alt="замок" />}
-        {...register('password')}
+        {...register('password', { required: 'Пароль обязателен' })}
+        errorMessage={errors.password?.message}
       />
-      {errors.password && (
-        <span className={styles.error}>{errors.password.message}</span>
-      )}
 
       <Button
         type="submit"

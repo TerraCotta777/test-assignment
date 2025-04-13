@@ -7,7 +7,6 @@ export async function login({
   email: string
   password: string
 }) {
-  console.log('here')
   const response = await api.post('/auth/login', { email, password })
   return response.data
 }

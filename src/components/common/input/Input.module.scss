@@ -1,7 +1,13 @@
+.inputContainer {
+    position: relative;
+    width: 100%;
+}
+
 .inputWrapper {
     position: relative;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     &.withLeftIcon .input {
@@ -40,10 +46,20 @@
     border: 1px solid #ccc;
     border-radius: 6px;
     transition: border 0.2s ease;
+
+    &.error {
+        border: 1px solid red;
+    }
 }
 
 .errorMessage {
-    margin-top: 0.25rem;
+    position: absolute;
+    right: 16px;
+    top: -9px;
+    background: #ffffff;
+    z-index: 10;
+    padding: 2px 5px;
     font-size: 0.875rem;
     color: red;
+    text-align: center;
 }
