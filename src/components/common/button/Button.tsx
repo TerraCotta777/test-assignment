@@ -6,6 +6,7 @@ import clsx from 'clsx'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary'
   icon?: ReactNode
+  disabled?: boolean
 }
 
 export function Button({
@@ -13,12 +14,13 @@ export function Button({
   className,
   variant = 'primary',
   icon,
+  disabled = false,
   ...rest
 }: ButtonProps) {
   return (
     <button
       className={clsx(styles.button, styles[variant], className)}
-      disabled={variant === 'primary' ? true : rest.disabled}
+      disabled={disabled}
       {...rest}
     >
       {variant === 'secondary' && icon && (

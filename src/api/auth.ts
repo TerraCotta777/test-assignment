@@ -7,8 +7,20 @@ export async function login({
   email: string
   password: string
 }) {
-  console.log(api.defaults.baseURL)
+  console.log('here')
   const response = await api.post('/auth/login', { email, password })
-  console.log(response.data)
+  return response.data
+}
+
+export async function signUp({
+  name,
+  email,
+  password,
+}: {
+  name: string
+  email: string
+  password: string
+}) {
+  const response = await api.post('/auth/sign-up', { name, email, password })
   return response.data
 }

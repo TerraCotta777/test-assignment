@@ -14,6 +14,11 @@
         border: none;
         background: var(--primary-button-background);
         color: var(--primary-button-foreground);
+
+        &:disabled {
+            background: #d4d4d4;
+            cursor: not-allowed;
+        }
     }
 
     &.secondary {

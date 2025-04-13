@@ -26,7 +26,7 @@ export default function Header() {
             <div className={styles.avatar}>A</div>
           </Link>
         ) : (
-          <Link href="/login">
+          <Link href="/auth/login">
             <Button
               variant="secondary"
               type="button"
