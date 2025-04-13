@@ -18,7 +18,7 @@ export default function SignUpForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<AuthData>({ mode: 'onBlur' })
   const router = useRouter()
   const [errorResponse, setErrorResponse] = useState('')
@@ -75,7 +75,7 @@ export default function SignUpForm() {
         type="submit"
         className={styles.button}
         icon={<Image src={LockIcon} alt="замок" />}
-        disabled={!isValid}
+        disabled={!isValid || isSubmitting}
       >
         Создать аккаунт
       </Button>

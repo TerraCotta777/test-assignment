@@ -17,6 +17,35 @@
     &.withRightIcon .input {
         padding-right: 2.5rem;
     }
+
+    &.withPrefix {
+        flex-wrap: nowrap;
+
+        .input {
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
+.label {
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+    color: #838383;
+}
+
+.prefix {
+    padding: 12px 22px;
+    border: 1px solid #d4d4d4;
+    height: 50px;
+    border-right: none;
+    font-size: 16px;
+    line-height: 160%;
+    color: #838383;
+    background-color: #f3f3f3;
+    border-radius: 5px 0 0 5px;
 }
 
 .leftIcon,
@@ -40,16 +69,23 @@
 
 .input {
     width: 100%;
-    height: 26px;
+    height: 50px;
     padding: 12px 22px;
-    font-size: 1rem;
+    font-size: 16px;
+    line-height: 160%;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border 0.2s ease;
+    border-radius: 5px;
 
     &.error {
         border: 1px solid red;
     }
+}
+
+.textarea {
+    height: 154px;
+    padding: 12px 20px;
+    font-size: 16px;
+    line-height: 160%;
 }
 
 .errorMessage {

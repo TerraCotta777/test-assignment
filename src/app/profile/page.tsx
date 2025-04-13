@@ -9,14 +9,27 @@ import PencilIcon from '@/assets/pen-solid.svg'
 import LogoutIcon from '@/assets/sign-out-alt-solid.svg'
 import { useAuth } from '@/hooks/useAuth'
 import { ProtectedRoute } from '@/components/layouts'
+import { updateProfile } from '@/api/profile'
+import { EditProfileModal } from '@/components/editProfileModal/EditProfileModal'
+import { useState } from 'react'
 
 export default function ProfilePage() {
-  const { profile, isLoading, isError } = useProfile()
+  const { profile, isLoading, isError, mutate } = useProfile()
   const { logout } = useAuth()
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error loading profile</div>
   if (!profile) return null
+
+  const handleProfileUpdate = async (data: {
+    name: string
+    slug: string
+    description: string
+  }) => {
+    await updateProfile(data)
+    await mutate()
+  }
 
   return (
     <ProtectedRoute>
@@ -45,9 +58,7 @@ export default function ProfilePage() {
               variant="secondary"
               className={styles.editButton}
               icon={<Image src={PencilIcon} alt="редактировать" />}
-              onClick={() => {
-                console.log('edit')
-              }}
+              onClick={() => setIsEditModalOpen(true)}
             >
               Редактировать
             </Button>
@@ -66,6 +77,12 @@ export default function ProfilePage() {
             Выйти
           </Button>
         </div>
+        <EditProfileModal
+          profile={profile}
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          onSubmit={handleProfileUpdate}
+        />
       </div>
     </ProtectedRoute>
   )

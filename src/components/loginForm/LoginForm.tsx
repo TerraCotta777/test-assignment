@@ -17,7 +17,7 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<Omit<AuthData, 'name'>>({ mode: 'all' })
   const router = useRouter()
   const [errorResponse, setErrorResponse] = useState('')
@@ -66,7 +66,7 @@ export default function LoginForm() {
         type="submit"
         className={styles.button}
         icon={<Image src={LockIcon} alt="замок" />}
-        disabled={!isValid}
+        disabled={!isValid || isSubmitting}
       >
         Войти
       </Button>
