@@ -12,11 +12,13 @@ import { ProtectedRoute } from '@/components/layouts'
 import { updateProfile } from '@/api/profile'
 import { EditProfileModal } from '@/components/editProfileModal/EditProfileModal'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function ProfilePage() {
   const { profile, isLoading, isError, mutate } = useProfile()
   const { logout } = useAuth()
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const router = useRouter()
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error loading profile</div>
@@ -29,6 +31,11 @@ export default function ProfilePage() {
   }) => {
     await updateProfile(data)
     await mutate()
+  }
+
+  const handleLogout = () => {
+    logout()
+    router.push('/auth/login')
   }
 
   return (
@@ -72,7 +79,7 @@ export default function ProfilePage() {
             variant="secondary"
             className={styles.logoutButton}
             icon={<Image src={LogoutIcon} alt="выйти" />}
-            onClick={logout}
+            onClick={handleLogout}
           >
             Выйти
           </Button>

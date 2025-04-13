@@ -13,6 +13,8 @@ export function useAuth() {
     fallbackData: null,
   })
 
+  const isAuthenticated = !!token
+
   const loginUser = async (data: Omit<AuthData, 'name'>) => {
     try {
       const response: AuthResponse = await login(data)
@@ -48,6 +50,7 @@ export function useAuth() {
     isError: error,
     loginUser,
     signUpUser,
+    isAuthenticated,
     logout,
   }
 }

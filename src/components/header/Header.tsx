@@ -5,10 +5,10 @@ import styles from './Header.module.scss'
 import Image from 'next/image'
 import LogoImg from '@/assets/logo.svg'
 import { Button } from '../common'
-// import { useAuth } from '@/shared/hooks/useAuth'
+import { useProfile } from '@/hooks/useProfile'
 
 export default function Header() {
-  //   const { user } = useAuth()
+  const { profile } = useProfile()
 
   return (
     <header className={styles.header}>
@@ -20,10 +20,10 @@ export default function Header() {
       </Link>
 
       <div className={styles.right}>
-        {false ? (
+        {profile ? (
           <Link href="/profile" className={styles.profile}>
-            <span className={styles.name}>Ariel</span>
-            <div className={styles.avatar}>A</div>
+            <span className={styles.name}>{profile.name}</span>
+            <div className={styles.avatar}>{profile.name[0]}</div>
           </Link>
         ) : (
           <Link href="/auth/login">
