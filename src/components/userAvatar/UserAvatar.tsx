@@ -12,11 +12,15 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ user, size = 'sm', className }: UserAvatarProps) {
+  const getImageUrl = (url: string) => {
+    if (url.startsWith('http')) return url
+    return `${process.env.NEXT_PUBLIC_BASE_URL}/${url}`
+  }
   return (
     <div className={clsx(styles.avatar, styles[size], className)}>
       {user.image ? (
         <Image
-          src={user.image.url}
+          src={getImageUrl(user.image.url)}
           alt={user.name}
           width={size === 'lg' ? 100 : 50}
           height={size === 'lg' ? 100 : 50}

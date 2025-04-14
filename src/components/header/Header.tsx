@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logoWrapper}>
+      <Link href="/user" className={styles.logoWrapper}>
         <Image src={LogoImg} alt="logo" className={styles.logo} />
         <span className={styles.logoText}>
           Разрабатываем и запускаем сложные веб проекты

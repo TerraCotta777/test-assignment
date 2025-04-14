@@ -31,4 +31,5 @@ main {
   width: 100%;
   flex-grow: 1;
   @include mixins.flex-center(column);
+  overflow: hidden;
 }

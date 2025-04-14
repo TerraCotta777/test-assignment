@@ -1,9 +1,22 @@
-import styles from '@/styles/page.module.scss'
+'use client'
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>Starter project</main>
-    </div>
-  )
+import { useAuth } from '@/hooks/useAuth'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+export default function HomePage() {
+  const { isAuthenticated, isLoading } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (isAuthenticated) {
+        router.push('/user')
+      } else {
+        router.push('/auth/login')
+      }
+    }
+  }, [isAuthenticated, isLoading, router])
+
+  return
 }

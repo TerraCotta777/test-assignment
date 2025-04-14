@@ -1,0 +1,79 @@
+.container {
+    margin: 0 auto;
+    padding: 50px 20px;
+    max-width: 840px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+
+    /* Webkit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #e6e6e6;
+        border-radius: 4px;
+    }
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #e6e6e6 transparent;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 140%;
+    margin-bottom: 28px;
+}
+
+.accountsList {
+    display: flex;
+    flex-direction: column;
+}
+
+.accountItem {
+    padding: 10px 0 9px;
+    border-top: 1px solid #e6e6e6;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        background-color: var(--light-background);
+    }
+
+    &:last-child {
+        border-bottom: 1px solid #e6e6e6;
+    }
+}
+
+.accountInfo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.userDetails {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+}
+
+.email {
+    font-size: 16px;
+    color: #838383;
+    line-height: 160%;
+}

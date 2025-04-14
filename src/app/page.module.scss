@@ -1,0 +1,55 @@
+.container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 140%;
+    margin-bottom: 32px;
+}
+
+.accountsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accountItem {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        background-color: var(--light-background);
+    }
+}
+
+.accountInfo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+}
+
+.email {
+    font-size: 16px;
+    color: #838383;
+    line-height: 160%;
+} 
