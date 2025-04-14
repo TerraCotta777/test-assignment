@@ -71,7 +71,14 @@ export function EditProfileModal({
                 errorMessage={errors.slug?.message}
               />
             </div>
-            <Input label="Описание" {...register('description')} textarea />
+            <Input
+              label="Описание"
+              {...register('description')}
+              textarea
+              value={
+                'Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым. Это тестовый контент, который не должен нести никакого смысла, лишь показать наличие самого текста или продемонстрировать типографику в деле.'
+              }
+            />
           </div>
           <div className={styles.buttons}>
             <Button

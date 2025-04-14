@@ -1,27 +1,16 @@
+@use '@/styles/mixins';
+
 .container {
     margin: 0 auto;
     padding: 50px 20px;
     max-width: 840px;
     height: calc(100vh - 80px);
     overflow-y: auto;
+    overflow-x: hidden;
 
-    /* Webkit browsers (Chrome, Safari) */
-    &::-webkit-scrollbar {
-        width: 6px;
+    @include mixins.max-width('lg') {
+        max-width: 100%;
     }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: #e6e6e6;
-        border-radius: 4px;
-    }
-
-    /* Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: #e6e6e6 transparent;
 }
 
 .title {
@@ -29,6 +18,10 @@
     font-weight: 500;
     line-height: 140%;
     margin-bottom: 28px;
+
+    @include mixins.max-width('lg') {
+        margin-bottom: 29px;
+    }
 }
 
 .accountsList {
@@ -39,10 +32,13 @@
 .accountItem {
     padding: 10px 0 9px;
     border-top: 1px solid #e6e6e6;
-    border-radius: 5px;
     transition: all 0.2s ease-in-out;
     text-decoration: none;
     color: inherit;
+
+    @include mixins.max-width('md') {
+        padding-bottom: 10px;
+    }
 
     &:hover {
         background-color: var(--light-background);
@@ -56,24 +52,43 @@
 .accountInfo {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
 }
 
 .userDetails {
-    flex-grow: 1;
     display: flex;
-    justify-content: space-between;
     gap: 8px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-grow: 1;
+    
+    @include mixins.max-width('md') {
+        flex-direction: column;
+        gap: 0px;
+        flex-grow: 0;
+    }
 }
 
 .name {
     font-size: 16px;
     font-weight: 500;
     line-height: 160%;
+
+    // @include mixins.max-width('md') {
+    //     font-size: 14px;
+    // }
 }
 
 .email {
     font-size: 16px;
     color: #838383;
     line-height: 160%;
+
+    // @include mixins.max-width('md') {
+    //     font-size: 14px;
+    // }
+
+    // @include mixins.max-width('sm') {
+    //     display: none;
+    // }
 }

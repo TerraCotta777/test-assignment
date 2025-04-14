@@ -29,31 +29,27 @@
     }
 }
 
-@mixin respond-to($breakpoint) {
-    @if $breakpoint =="sm" {
-        @media (min-width: 576px) {
+@mixin max-width($breakpoint) {
+    @if $breakpoint == "xl" {
+        @media (max-width: 1199px) {
             @content;
         }
     }
-
-    @else if $breakpoint =="md" {
-        @media (min-width: 768px) {
+    @else if $breakpoint == "lg" {
+        @media (max-width: 991px) {
             @content;
         }
     }
-
-    @else if $breakpoint =="lg" {
-        @media (min-width: 992px) {
+    @else if $breakpoint == "md" {
+        @media (max-width: 767px) {
             @content;
         }
     }
-
-    @else if $breakpoint =="xl" {
-        @media (min-width: 1200px) {
+    @else if $breakpoint == "sm" {
+        @media (max-width: 575px) {
             @content;
         }
     }
-
     @else {
         @warn "Unknown breakpoint: `#{$breakpoint}`. Please use 'sm', 'md', 'lg', or 'xl'.";
     }
