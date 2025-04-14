@@ -8,12 +8,14 @@ import { EditProfileModal } from '@/components/editProfileModal/EditProfileModal
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { UserProfile } from '@/components/userProfile/UserProfile'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 export default function ProfilePage() {
   const { profile, isLoading, isError, mutate } = useProfile()
   const { logout } = useAuth()
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const router = useRouter()
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error loading profile</div>
@@ -35,12 +37,14 @@ export default function ProfilePage() {
 
   return (
     <ProtectedRoute>
-      <UserProfile
-        profile={profile}
-        isEditable
-        onEdit={() => setIsEditModalOpen(true)}
-        onLogout={handleLogout}
-      />
+      {(!isMobile || !isEditModalOpen) && (
+        <UserProfile
+          profile={profile}
+          isEditable
+          onEdit={() => setIsEditModalOpen(true)}
+          onLogout={handleLogout}
+        />
+      )}
       <EditProfileModal
         profile={profile}
         isOpen={isEditModalOpen}

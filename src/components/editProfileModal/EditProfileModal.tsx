@@ -5,6 +5,7 @@ import styles from './EditProfileModal.module.scss'
 import { Button, Input } from '@/components/common'
 import { useForm } from 'react-hook-form'
 import { Profile } from '@/types/profileTypes'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 interface EditProfileModalProps {
   profile: Profile
@@ -26,6 +27,8 @@ export function EditProfileModal({
   onSubmit,
 }: EditProfileModalProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const isMobile = useMediaQuery('(max-width: 767px)')
+
   const {
     register,
     handleSubmit,
@@ -53,7 +56,7 @@ export function EditProfileModal({
   if (!isOpen) return null
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={isMobile ? undefined : onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <h2 className={styles.title}>Редактировать профиль</h2>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -74,10 +77,8 @@ export function EditProfileModal({
             <Input
               label="Описание"
               {...register('description')}
+              className={styles.description}
               textarea
-              value={
-                'Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым. Это тестовый контент, который не должен нести никакого смысла, лишь показать наличие самого текста или продемонстрировать типографику в деле.'
-              }
             />
           </div>
           <div className={styles.buttons}>

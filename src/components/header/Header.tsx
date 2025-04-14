@@ -6,6 +6,7 @@ import Image from 'next/image'
 import LogoImg from '@/assets/logo.svg'
 import { Button } from '../common'
 import { useProfile } from '@/hooks/useProfile'
+import { UserAvatar } from '../userAvatar/UserAvatar'
 
 export default function Header() {
   const { profile } = useProfile()
@@ -23,7 +24,7 @@ export default function Header() {
         {profile ? (
           <Link href="/profile" className={styles.profile}>
             <span className={styles.name}>{profile.name}</span>
-            <div className={styles.avatar}>{profile.name[0]}</div>
+            <UserAvatar user={profile} size="sm" className={styles.avatar} />
           </Link>
         ) : (
           <Link href="/auth/login">
