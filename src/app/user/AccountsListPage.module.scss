@@ -73,22 +73,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 160%;
-
-    // @include mixins.max-width('md') {
-    //     font-size: 14px;
-    // }
 }
 
 .email {
     font-size: 16px;
     color: #838383;
     line-height: 160%;
-
-    // @include mixins.max-width('md') {
-    //     font-size: 14px;
-    // }
-
-    // @include mixins.max-width('sm') {
-    //     display: none;
-    // }
 }
