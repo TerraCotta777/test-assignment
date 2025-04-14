@@ -27,7 +27,9 @@ export function UserAvatar({ user, size = 'sm', className }: UserAvatarProps) {
           className={styles.image}
         />
       ) : (
-        <div className={styles.placeholder}>{user.name[0].toUpperCase()}</div>
+        <div className={clsx(styles.placeholder, styles[size])}>
+          {user.name[0].toUpperCase()}
+        </div>
       )}
     </div>
   )
